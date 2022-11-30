@@ -1,0 +1,67 @@
+body {
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: rgba(173, 174, 175, 0.918);
+    background-color: #333;
+   }
+   
+   footer {
+     text-align: center;
+   }
+   
+   .container {
+        position: right;
+       margin: 18px;
+       width: 100%;
+      
+     }
+   
+     .navigation {
+       overflow: none;
+       background-color: #333;
+       position: sticky;
+       top:0%;
+     }
+   
+   
+     .navigation a {
+       float: left;
+       color: #f2f2f2;
+       text-align: center;
+       padding: 14px 16px;
+       text-decoration: none;
+       font-size: 25px;
+     }
+   
+   .navigation a:hover {
+     background-color: #ddd;
+     color: black;
+   }
+   
+   .navigation-right {
+     float:right;
+   }
+    
+   .profile-background {
+     background-image: url("../images/landing-page.jpg");
+     display: flex;
+     height: 920px;
+     background-position: top;
+     background-size: cover;
+     background-repeat: no-repeat;
+     transform: translate(-50% -50%);
+   }
+   
+   
+   
+   .hero-intro {
+     text-align: center;
+     margin-top: 375px;
+     font-size: 48px;
+     color: #ddd;
+   }
+   
+   .hero-intro2 {
+     text-align: center;
+      font-size: 40px;
+     color: #ddd;
+   }
