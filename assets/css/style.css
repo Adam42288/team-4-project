@@ -10,7 +10,7 @@ body {
    
    .container {
         position: right;
-       margin: 18px;
+       margin: 5px;
        width: 100%;
       
      }
@@ -55,13 +55,40 @@ body {
    
    .hero-intro {
      text-align: center;
-     margin-top: 375px;
+     margin-top: 200px;
      font-size: 48px;
      color: #ddd;
    }
    
    .hero-intro2 {
      text-align: center;
-      font-size: 40px;
+      font-size: 30px;
      color: #ddd;
    }
+
+   .card {
+    display: flex;
+    width: 500px;
+    height: 400px;
+    background-color: white;
+    padding: 20px;
+    box-shadow: 5px 5px 5px gray;
+    border-radius: 10px;
+    justify-content: center;
+    margin: auto;
+    align-content: center;
+    font-size: 25px;
+    color: black;
+  }
+
+  .card-container {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+  }
+  
+  /* On mouse-over, add a deeper shadow */
+  .card:hover {
+    box-shadow: 5px 5px 5px red;
+  }
