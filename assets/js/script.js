@@ -1,5 +1,6 @@
 var eventUrl = 'https://app.ticketmaster.com/discovery/v2/events.json?apikey=JjogNcZMGs6cpQBpjGBuUX8hI8CkzSU9'
 var eventNameContainer = document.getElementById('event-list-container')
+
 var locationInputBtn = document.getElementById('input-btn');
 var locationInput = document.getElementById('input-container');
 
@@ -16,7 +17,49 @@ locationInputBtn.addEventListener('click', function(event){
 
 var eventURl = 'https://app.ticketmaster.com/discovery/v2/events.json?&city=austin&apikey=JjogNcZMGs6cpQBpjGBuUX8hI8CkzSU9';
 
-fetch(eventURl).then(function (response){
+var locationInput = document.getElementById('input-box');
+var sportsContainer = document.getElementById('sports-event')
+
+
+var musicEventURl = 'https://app.ticketmaster.com/discovery/v2/events.json?classificationName=music&city=austin&apikey=JjogNcZMGs6cpQBpjGBuUX8hI8CkzSU9';
+var sportsEventURl = 'https://app.ticketmaster.com/discovery/v2/events.json?classificationName=sports&city=austin&apikey=JjogNcZMGs6cpQBpjGBuUX8hI8CkzSU9';
+
+fetch(sportsEventURl).then(function (response){
+  return response.json();
+}).then(function(response){
+ console.log(response._embedded.events);
+ console.log(response);
+//loop to create links with images
+for (var i = 0; i < response._embedded.events.length; i++){
+  var eventDate = response._embedded.events[i].dates.start.localDate;
+  var eventName = response._embedded.events[i].name;
+  
+  eventLink = response._embedded.events[i].url;
+  eventImgLink = response._embedded.events[i].images[0].url;
+  
+  eventPage = document.createElement('a')
+  eventImgEl = document.createElement('img')
+ 
+  eventPage.title = eventName;
+  eventPage.href = eventLink;
+  eventImgEl.src = eventImgLink;
+  eventImgEl.href = eventLink;
+  
+  sportsContainer.appendChild(eventPage);
+  eventPage.textContent = eventName + ' ' + eventDate;
+  eventPage.appendChild(eventImgEl)
+
+  console.log(eventImgEl)
+  console.log(eventPage.textContent)
+
+ 
+  
+}
+ 
+})
+
+
+fetch(musicEventURl).then(function (response){
     return response.json();
 }).then(function(response){
    console.log(response._embedded.events);
