@@ -98,4 +98,12 @@ body {
     flex-direction: column;
     max-height: fit-content;
     overflow-y: auto;
+
+  }
+
+  #event-list-container li{
+    list-style: none;
+    border: 1px solid black;
+=======
+
   }
