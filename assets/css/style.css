@@ -74,7 +74,7 @@ body {
    .card {
     display: flex;
     width: 500px;
-    height: 400px;
+    height: fit-content;
     background-color: white;
     padding: 20px;
     box-shadow: 5px 5px 5px gray;
@@ -90,7 +90,9 @@ body {
     display: flex;
     flex-direction: column;
     text-align: center;
-    justify-content: center;
+    
+    overflow-x: scroll;
+   
   }
   
   /* On mouse-over, add a deeper shadow */
@@ -100,9 +102,10 @@ body {
 
   #event-list-container{
     display: flex;
-    flex-direction: column;
-    max-height: fit-content;
+    flex-direction: row;
+    max-height: 200px;
     overflow-y: auto;
+
   }
 
   #event-list-container li{
