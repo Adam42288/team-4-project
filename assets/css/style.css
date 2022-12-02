@@ -51,7 +51,12 @@ body {
      transform: translate(-50% -50%);
    }
    
-   
+   .input-box {
+    display:flex;
+    align-items: center;
+    font-size: 30px;
+    text-align: center;
+   }
    
    .hero-intro {
      text-align: center;
@@ -62,7 +67,7 @@ body {
    
    .hero-intro2 {
      text-align: center;
-      font-size: 30px;
+      font-size: 25px;
      color: #ddd;
    }
 
@@ -98,4 +103,10 @@ body {
     flex-direction: column;
     max-height: fit-content;
     overflow-y: auto;
+  }
+
+  #event-list-container li{
+    list-style: none;
+    border: 1px solid black;
+
   }
