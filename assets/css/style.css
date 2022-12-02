@@ -73,7 +73,7 @@ body {
 
    .card {
     display: flex;
-    width: 500px;
+    width: 60%;
     height: fit-content;
     background-color: white;
     padding: 20px;
@@ -82,7 +82,6 @@ body {
     justify-content: center;
     margin: auto;
     align-content: center;
-    font-size: 25px;
     color: black;
   }
 
@@ -110,6 +109,27 @@ body {
   }
 
   #event-list-container a{
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-height: fit-content;
+
+   
+   
+  }
+
+  #sports-event{
+    display: flex;
+    flex-direction: row;
+    max-height: 200px;
+    overflow-y: auto;
+    max-height: fit-content;
+
+  }
+
+  #sports-event a{
   text-decoration: none;
   display: flex;
   flex-direction: column;
