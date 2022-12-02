@@ -7,7 +7,6 @@ var locationInput = document.getElementById('input-box');
 var eventURl = 'https://app.ticketmaster.com/discovery/v2/events.json?&city=austin&apikey=JjogNcZMGs6cpQBpjGBuUX8hI8CkzSU9';
 
 
-=======
 var eventListContainer = document.getElementById('event-list-container')
 
 
@@ -40,6 +39,7 @@ var eventListContainer = document.getElementById('event-list-container')
 
 var eventURl = 'https://app.ticketmaster.com/discovery/v2/events.json?&city=austin&apikey=JjogNcZMGs6cpQBpjGBuUX8hI8CkzSU9';
 
+
 fetch(eventURl).then(function (response){
     return response.json();
 }).then(function(response){
@@ -58,7 +58,7 @@ for (var i = 0; i < response._embedded.events.length; i++){
     eventPage.textContent = eventName + ' ' + eventDate;
     console.log(eventPage.textContent)
    
-=======
+
     var eventList = response._embedded.events[i].name;
     eventPage = document.createElement('li')
     eventListContainer.appendChild(eventPage);
@@ -70,9 +70,6 @@ for (var i = 0; i < response._embedded.events.length; i++){
 }
    
 })
-
-
-
 
 
 // Weather API placeholder
@@ -115,7 +112,7 @@ for (var i = 0; i < response._embedded.events.length; i++){
     //}
 
 //getData();
-=======
+
 //console.log(response);
 
 
@@ -123,9 +120,9 @@ for (var i = 0; i < response._embedded.events.length; i++){
 
 
 
-
 //var searchValue = document.querySelector('#searchbox');
 //searchValue.addEventListener('keypress', setFunc);
+
   //  function setFunc(e) {
     //    if(e.keyCode === 13) {
       //      getData(searchValue.value);
@@ -156,4 +153,6 @@ for (var i = 0; i < response._embedded.events.length; i++){
         //})
     //}
 
+
 //getData();
+
