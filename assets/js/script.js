@@ -1,4 +1,3 @@
-var eventUrl = 'https://app.ticketmaster.com/discovery/v2/events.json?apikey=JjogNcZMGs6cpQBpjGBuUX8hI8CkzSU9'
 var eventNameContainer = document.getElementById('event-list-container')
 
 var locationInputBtn = document.getElementById('input-btn');
@@ -15,7 +14,6 @@ locationInputBtn.addEventListener('click', function(event){
   console.log(locationInput)
 })
 
-var eventURl = 'https://app.ticketmaster.com/discovery/v2/events.json?&city=austin&apikey=JjogNcZMGs6cpQBpjGBuUX8hI8CkzSU9';
 
 var locationInput = document.getElementById('input-box');
 var sportsContainer = document.getElementById('sports-event')

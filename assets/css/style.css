@@ -67,7 +67,7 @@ body {
    
    .hero-intro {
      text-align: center;
-     margin-top: 200px;
+     margin-top: 100px;
      font-size: 48px;
      color: #ddd;
    }
@@ -122,6 +122,9 @@ body {
   align-items: center;
   justify-content: center;
   max-height: fit-content;
+  margin: 2px;
+  border: 2px solid black;
+  border-radius: 20px;
 
    
    
@@ -129,6 +132,7 @@ body {
 
   #sports-event{
     display: flex;
+    flex-grow: 1;
     flex-direction: row;
     max-height: 200px;
     overflow-y: auto;
@@ -143,12 +147,19 @@ body {
   align-items: center;
   justify-content: center;
   max-height: fit-content;
-
+  margin: 2px;
+  border: 2px solid black;
+  border-radius: 20px;
    
    
   }
 
+ 
+  
+
   img{
     max-width: 200px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
   }
 
