@@ -112,7 +112,7 @@ body {
     box-shadow: 5px 5px 5px red;
   }
 
-  #event-list-container{
+  #music-events{
     display: flex;
     flex-direction: row;
     max-height: 200px;
@@ -121,7 +121,7 @@ body {
 
   }
 
-  #event-list-container a{
+  #music-events a{
   text-decoration: none;
   display: flex;
   flex-direction: column;
@@ -167,5 +167,9 @@ body {
     max-width: 200px;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
+  }
+
+  button{
+    padding: 20px;
   }
 
