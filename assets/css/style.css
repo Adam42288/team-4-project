@@ -160,9 +160,6 @@ body {
    
   }
 
- 
-  
-
   img{
     max-width: 200px;
     border-bottom-left-radius: 20px;
@@ -172,4 +169,132 @@ body {
   button{
     padding: 20px;
   }
+
+#cityInput, #cityName, #inputContainer,button{
+    margin: 3px;
+padding:5px;
+text-align:center;
+font-size:20px;
+font-weight:bold;
+}
+
+#Para1{
+    position: absolute;
+    top: 130%;
+    left: 80%;
+    transform: translate(-50%, -50%);
+    height: 450px;
+    width: 1400px;
+}
+
+#weatherContainer{
+    position: absolute;
+    top: 140%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    height: 450px;
+    width: 1400px;
+    border: 5px solid rgba(97, 95, 95, 0.829);    
+    border-radius: 10px;
+}
+#currentWeather{
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    height: 350px;
+    width: 300px;
+}
+
+#iconsContainer{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    height: 400px;
+    width: 1350px;    
+    border: 5px solid rgb(31, 82, 82);    
+    border-radius: 10px;
+}
+
+.icons0{
+    display: inline-bock;
+    float: left;
+    height: 350px;
+    width: 450px;
+    margin: 20px;
+    border: 5px solid rgb(48, 47, 47);
+    border-radius: 10px;
+}
+
+.icons{
+    display: inline-bock;
+    float: left;
+    height: 310px;
+    width: 215px;
+    margin: 20px;
+    border: 5px solid rgb(48, 47, 47);
+    border-radius: 10px;
+}
+
+.image{
+    height: 140px;
+    width: 100%;
+}
+
+.imgClass{
+    height: 140px;
+    width: 100%;
+}
+
+.weather{
+    margin: 5px;
+   /*  background-color: rgb(106, 215, 255); */
+    border-radius: 5px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.weathers {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.tempValues{
+    text-align: center;
+    display: inline-block;
+    border-radius: 5px;
+    height: 25px;
+    width: 85px;
+    margin: 0;
+    margin-bottom: 5px;
+    margin-left: 5px;
+}
+
+
+.windValues{
+    text-align: center;
+    display: inline-block;
+    border-radius: 5px;
+    height: 25px;
+    width: 85px;
+    margin: 0;
+    margin-bottom: 5px;
+    margin-left: 5px;
+}
+
+.humidityValues{
+    text-align: center;
+    display: inline-block;
+    border-radius: 5px;
+    height: 25px;
+    width: 85px;
+    margin: 0;
+    margin-bottom: 5px;
+    margin-left: 5px;
+}
+
 
