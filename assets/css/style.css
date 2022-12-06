@@ -180,9 +180,15 @@ font-weight:bold;
 }
 
 #Para1{
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     position: absolute;
-    top: 130%;
-    left: 80%;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 25px;
+    top: 30%;
+    left: 50%;
     transform: translate(-50%, -50%);
     height: 450px;
     width: 1400px;
@@ -190,7 +196,7 @@ font-weight:bold;
 
 #weatherContainer{
     position: absolute;
-    top: 140%;
+    top: 100%;
     left: 50%;
     margin-right: -50%;
     transform: translate(-50%, -50%);
@@ -198,6 +204,8 @@ font-weight:bold;
     width: 1400px;
     border: 5px solid rgba(97, 95, 95, 0.829);    
     border-radius: 10px;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
 }
 #currentWeather{
     position: absolute;

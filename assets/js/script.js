@@ -16,7 +16,10 @@ var firstSearch = true;
     //hides cards on page load
 window.onload = function(){
     document.getElementById('card-block').style.display = 'none';
+
     document.getElementById('Para1').style.display = 'none'
+
+    document.getElementById('weatherContainer').style.display = 'none';
 
 }
 
@@ -41,7 +44,11 @@ locationInputBtn.addEventListener('click', function(event){
 
         //displays cards once city has been entered    
         document.getElementById('card-block').style.display= 'block';
+
         document.getElementById('weatherContainer').style.display = 'block'
+
+        document.getElementById('weatherContainer').style.display = 'block';
+
 
         //sets fetch urls with city chosen as a filter
         var musicEventURl = 'https://app.ticketmaster.com/discovery/v2/events.json?classificationName=music&city='+inputValue+'&apikey=JjogNcZMGs6cpQBpjGBuUX8hI8CkzSU9';
@@ -61,7 +68,11 @@ locationInputBtn.addEventListener('click', function(event){
 
         //displays cards once city has been entered    
         document.getElementById('card-block').style.display= 'block';
+
         document.getElementById('weatherContainer').style.display = 'block'
+
+        document.getElementById('weatherContainer').style.display = 'block';
+
 
         //sets fetch urls with city chosen as a filter
         var musicEventURl = 'https://app.ticketmaster.com/discovery/v2/events.json?classificationName=music&city='+inputValue+'&apikey=JjogNcZMGs6cpQBpjGBuUX8hI8CkzSU9';
