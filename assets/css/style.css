@@ -129,8 +129,9 @@ body {
   justify-content: center;
   max-height: fit-content;
   margin: 2px;
-  border: 2px solid black;
-  border-radius: 20px;
+  border-left: 2px solid black;
+  
+  
 
    
    
@@ -140,6 +141,7 @@ body {
     display: flex;
     flex-grow: 1;
     flex-direction: row;
+    
     max-height: 200px;
     overflow-y: auto;
     max-height: fit-content;
@@ -153,17 +155,16 @@ body {
   align-items: center;
   justify-content: center;
   max-height: fit-content;
-  margin: 2px;
-  border: 2px solid black;
-  border-radius: 20px;
+  
+  border-left: 2px solid black;
+  
    
    
   }
 
   img{
     max-width: 200px;
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
+   
   }
 
   button{
