@@ -180,7 +180,7 @@ font-weight:bold;
 
 #Para1{
     position: absolute;
-    top: 130%;
+    top: 30%;
     left: 80%;
     transform: translate(-50%, -50%);
     height: 450px;
@@ -189,7 +189,7 @@ font-weight:bold;
 
 #weatherContainer{
     position: absolute;
-    top: 140%;
+    top: 100%;
     left: 50%;
     margin-right: -50%;
     transform: translate(-50%, -50%);
