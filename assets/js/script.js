@@ -1,8 +1,14 @@
 var eventNameContainer = document.getElementById('music-events');
 var sportsContainer = document.getElementById('sports-event')
 var locationInputBtn = document.getElementById('input-btn');
+var getLocationBtn = document.getElementById('get-location')
+var getLocationEl =  document.getElementById('get-location-p')
 var headerText = document.getElementById('hero-intro2');
 var firstSearch = true;
+
+
+
+
 
 
 
@@ -10,12 +16,16 @@ var firstSearch = true;
     //hides cards on page load
 window.onload = function(){
     document.getElementById('card-block').style.display = 'none';
+    document.getElementById('Para1').style.display = 'none'
+
 }
 
 
     //adds event for click
 locationInputBtn.addEventListener('click', function(event){
     event.preventDefault()
+
+    headerText.textContent = "Enter A Different City"
     
     if(firstSearch === false){
         //reloads cards with new city on new search
@@ -23,6 +33,7 @@ locationInputBtn.addEventListener('click', function(event){
         sportsContainer.innerHTML = ''
         //document.innerHTML = ''
         
+        
         var locationInput = document.getElementById('input-container');
         var inputValue = locationInput.value;
     
@@ -30,18 +41,19 @@ locationInputBtn.addEventListener('click', function(event){
 
         //displays cards once city has been entered    
         document.getElementById('card-block').style.display= 'block';
+        document.getElementById('weatherContainer').style.display = 'block'
 
         //sets fetch urls with city chosen as a filter
         var musicEventURl = 'https://app.ticketmaster.com/discovery/v2/events.json?classificationName=music&city='+inputValue+'&apikey=JjogNcZMGs6cpQBpjGBuUX8hI8CkzSU9';
         var sportsEventURl = 'https://app.ticketmaster.com/discovery/v2/events.json?classificationName=sports&city='+inputValue+'&apikey=JjogNcZMGs6cpQBpjGBuUX8hI8CkzSU9';
-        
-        
+       
         renderSportsCards();
         renderMusicCards();
     
 
     }else{
         
+        
         var locationInput = document.getElementById('input-container');
         var inputValue = locationInput.value;
     
@@ -49,6 +61,7 @@ locationInputBtn.addEventListener('click', function(event){
 
         //displays cards once city has been entered    
         document.getElementById('card-block').style.display= 'block';
+        document.getElementById('weatherContainer').style.display = 'block'
 
         //sets fetch urls with city chosen as a filter
         var musicEventURl = 'https://app.ticketmaster.com/discovery/v2/events.json?classificationName=music&city='+inputValue+'&apikey=JjogNcZMGs6cpQBpjGBuUX8hI8CkzSU9';
@@ -60,8 +73,7 @@ locationInputBtn.addEventListener('click', function(event){
         fetch(sportsEventURl).then(function (response){
             return response.json();
         }).then(function (response){
-            console.log(response._embedded.events);
-            console.log(response);
+            
             //loop to create links with images
         
             for (var i = 0; i < response._embedded.events.length; i++){
@@ -80,7 +92,7 @@ locationInputBtn.addEventListener('click', function(event){
                 eventImgEl.href = eventLink;
             
                 sportsContainer.appendChild(eventPage);
-                eventPage.textContent = eventName + ' ' + eventDate;
+                eventPage.textContent = eventName + ' (' + eventDate + ')';
                 eventPage.appendChild(eventImgEl)
             }
             
@@ -95,8 +107,7 @@ locationInputBtn.addEventListener('click', function(event){
             return response.json();
         })
         .then(function(response){
-             console.log(response._embedded.events);
-             console.log(response);
+             
           //loop to create links with images
             for (var i = 0; i < response._embedded.events.length; i++){
                 var eventDate = response._embedded.events[i].dates.start.localDate;
@@ -114,7 +125,7 @@ locationInputBtn.addEventListener('click', function(event){
                 eventImgEl.href = eventLink;
             
                 eventNameContainer.appendChild(eventPage);
-                eventPage.textContent = eventName + ' ' + eventDate;
+                eventPage.textContent = eventName + ' (' + eventDate + ')';
                 eventPage.appendChild(eventImgEl)        
             };
         
@@ -134,6 +145,114 @@ locationInputBtn.addEventListener('click', function(event){
  
 });
 
+getLocationBtn.addEventListener('click', function(event){
+    event.preventDefault()
+
+    headerText.textContent = "Enter A Different City"
+
+    var geoLocationUrl = 'http://ip-api.com/json/?fields=61439'
+    
+    fetch(geoLocationUrl).then(function (response){
+        return response.json();
+        
+    }).then(function (response){
+        console.log(response.city)
+        eventNameContainer.innerHTML = ''
+        sportsContainer.innerHTML = ''
+        var inputValue = response.city;
+        
+
+        localStorage.setItem('last-search', inputValue);
+
+        //displays cards once city has been entered    
+    
+            
+            
+            document.getElementById('card-block').style.display= 'block';
+            document.getElementById('weatherContainer').style.display = 'block'
+            //sets fetch urls with city chosen as a filter
+            var musicEventURl = 'https://app.ticketmaster.com/discovery/v2/events.json?classificationName=music&city='+inputValue+'&apikey=JjogNcZMGs6cpQBpjGBuUX8hI8CkzSU9';
+            var sportsEventURl = 'https://app.ticketmaster.com/discovery/v2/events.json?classificationName=sports&city='+inputValue+'&apikey=JjogNcZMGs6cpQBpjGBuUX8hI8CkzSU9';
+            
+            getCurrentWeather(inputValue);
+            
+            function renderSportsCards(){
+                fetch(sportsEventURl).then(function (response){
+                    return response.json();
+                }).then(function (response){
+
+                    //loop to create links with images
+                
+                    for (var i = 0; i < response._embedded.events.length; i++){
+                        var eventDate = response._embedded.events[i].dates.start.localDate;
+                        var eventName = response._embedded.events[i].name;
+                    
+                        eventLink = response._embedded.events[i].url;
+                        eventImgLink = response._embedded.events[i].images[0].url;
+                    
+                        eventPage = document.createElement('a')
+                        eventImgEl = document.createElement('img')
+                    
+                        eventPage.title = eventName;
+                        eventPage.href = eventLink;
+                        eventImgEl.src = eventImgLink;
+                        eventImgEl.href = eventLink;
+                    
+                        sportsContainer.appendChild(eventPage);
+                        eventPage.textContent = eventName + ' (' + eventDate + ')';
+                        eventPage.appendChild(eventImgEl)
+                    }
+
+                
+                
+                })
+            }
+                renderSportsCards();
+        
+            function renderMusicCards(){
+                fetch(musicEventURl).then(function (response){
+                    return response.json();
+                })
+                .then(function(response){
+
+                  //loop to create links with images
+                    for (var i = 0; i < response._embedded.events.length; i++){
+                        var eventDate = response._embedded.events[i].dates.start.localDate;
+                        var eventName = response._embedded.events[i].name;
+                    
+                        eventLink = response._embedded.events[i].url;
+                        eventImgLink = response._embedded.events[i].images[0].url;
+                    
+                        eventPage = document.createElement('a')
+                        eventImgEl = document.createElement('img')
+                    
+                        eventPage.title = eventName;
+                        eventPage.href = eventLink;
+                        eventImgEl.src = eventImgLink;
+                        eventImgEl.href = eventLink;
+                    
+                        eventNameContainer.appendChild(eventPage);
+                        eventPage.textContent = eventName + ' (' + eventDate +')';
+                        eventPage.appendChild(eventImgEl)        
+                    };
+                
+                });
+            }       
+            renderMusicCards();
+
+            firstSearch = false;
+            
+        
+    })
+    getLocationBtn.style.display = 'none'
+   getLocationEl.innerHTML = ''
+    
+
+    
+
+    
+
+})
 
 
 // Initializing variables
