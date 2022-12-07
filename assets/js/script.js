@@ -13,6 +13,7 @@ var firstSearch = true;
 
 
 
+
     //hides cards on page load
 window.onload = function(){
     document.getElementById('card-block').style.display = 'none';
@@ -23,12 +24,18 @@ window.onload = function(){
 
 }
 
+function getDate(){
+    
+
+}
 
     //adds event for click
 locationInputBtn.addEventListener('click', function(event){
     event.preventDefault()
 
     headerText.textContent = "Enter A Different City"
+
+   
     
     if(firstSearch === false){
         //reloads cards with new city on new search
@@ -36,6 +43,7 @@ locationInputBtn.addEventListener('click', function(event){
         sportsContainer.innerHTML = ''
         //document.innerHTML = ''
         
+        var dateInput = document.getElementById('date').value;
         
         var locationInput = document.getElementById('input-container');
         var inputValue = locationInput.value;
@@ -51,15 +59,15 @@ locationInputBtn.addEventListener('click', function(event){
 
 
         //sets fetch urls with city chosen as a filter
-        var musicEventURl = 'https://app.ticketmaster.com/discovery/v2/events.json?classificationName=music&city='+inputValue+'&apikey=JjogNcZMGs6cpQBpjGBuUX8hI8CkzSU9';
-        var sportsEventURl = 'https://app.ticketmaster.com/discovery/v2/events.json?classificationName=sports&city='+inputValue+'&apikey=JjogNcZMGs6cpQBpjGBuUX8hI8CkzSU9';
-       
+        var musicEventURl = 'https://app.ticketmaster.com/discovery/v2/events.json?startDateTime='+dateInput+':00Z&sort=date,asc&classificationName=music&city='+inputValue+'&apikey=JjogNcZMGs6cpQBpjGBuUX8hI8CkzSU9';
+        var sportsEventURl = 'https://app.ticketmaster.com/discovery/v2/events.json?startDateTime='+dateInput+':00Z&sort=date,asc&classificationName=sports&city='+inputValue+'&apikey=JjogNcZMGs6cpQBpjGBuUX8hI8CkzSU9';
         renderSportsCards();
         renderMusicCards();
     
 
     }else{
         
+        var dateInput = document.getElementById('date').value;
         
         var locationInput = document.getElementById('input-container');
         var inputValue = locationInput.value;
@@ -75,8 +83,8 @@ locationInputBtn.addEventListener('click', function(event){
 
 
         //sets fetch urls with city chosen as a filter
-        var musicEventURl = 'https://app.ticketmaster.com/discovery/v2/events.json?classificationName=music&city='+inputValue+'&apikey=JjogNcZMGs6cpQBpjGBuUX8hI8CkzSU9';
-        var sportsEventURl = 'https://app.ticketmaster.com/discovery/v2/events.json?classificationName=sports&city='+inputValue+'&apikey=JjogNcZMGs6cpQBpjGBuUX8hI8CkzSU9';
+        var musicEventURl = 'https://app.ticketmaster.com/discovery/v2/events.json?startDateTime='+dateInput+':00Z&sort=date,asc&classificationName=music&city='+inputValue+'&apikey=JjogNcZMGs6cpQBpjGBuUX8hI8CkzSU9';
+        var sportsEventURl = 'https://app.ticketmaster.com/discovery/v2/events.json?startDateTime='+dateInput+':00Z&sort=date,asc&classificationName=sports&city='+inputValue+'&apikey=JjogNcZMGs6cpQBpjGBuUX8hI8CkzSU9';
         }
         getCurrentWeather(inputValue);
         
@@ -156,10 +164,20 @@ locationInputBtn.addEventListener('click', function(event){
  
 });
 
+//get location function
 getLocationBtn.addEventListener('click', function(event){
     event.preventDefault()
 
     headerText.textContent = "Enter A Different City"
+
+   
+    //get date input
+    var dateInput = document.getElementById('date').value;
+    var dateInputClean = dateInput.replace(/-/g, "")
+    
+    console.log(dateInputClean)
+
+    console.log(dateInput)
 
     var geoLocationUrl = 'http://ip-api.com/json/?fields=61439'
     
@@ -168,8 +186,12 @@ getLocationBtn.addEventListener('click', function(event){
         
     }).then(function (response){
         console.log(response.city)
+        
+        //clear container before loading data
         eventNameContainer.innerHTML = ''
         sportsContainer.innerHTML = ''
+        
+        //sets location as input value
         var inputValue = response.city;
         
 
@@ -182,18 +204,22 @@ getLocationBtn.addEventListener('click', function(event){
             document.getElementById('card-block').style.display= 'block';
             document.getElementById('weatherContainer').style.display = 'block'
             //sets fetch urls with city chosen as a filter
-            var musicEventURl = 'https://app.ticketmaster.com/discovery/v2/events.json?classificationName=music&city='+inputValue+'&apikey=JjogNcZMGs6cpQBpjGBuUX8hI8CkzSU9';
-            var sportsEventURl = 'https://app.ticketmaster.com/discovery/v2/events.json?classificationName=sports&city='+inputValue+'&apikey=JjogNcZMGs6cpQBpjGBuUX8hI8CkzSU9';
+            var musicEventURl = 'https://app.ticketmaster.com/discovery/v2/events.json?startDateTime='+dateInput+':00Z&sort=date,asc&classificationName=music&city='+inputValue+'&apikey=JjogNcZMGs6cpQBpjGBuUX8hI8CkzSU9';
+            var sportsEventURl = 'https://app.ticketmaster.com/discovery/v2/events.json?startDateTime='+dateInput+':00Z&sort=date,asc&classificationName=sports&city='+inputValue+'&apikey=JjogNcZMGs6cpQBpjGBuUX8hI8CkzSU9';
             
+            //TODO: make these links dynamic with calendar selector
+            //var sportsEventURl = 'https://app.ticketmaster.com/discovery/v2/events.json?startDateTime=2022-12-31T08:49:00Z&endDateTime=2023-01-02T08:49:00Z&sort=date,asc&classificationName=sports&city='+inputValue+'&apikey=JjogNcZMGs6cpQBpjGBuUX8hI8CkzSU9';
+            //var musicEventURl = 'https://app.ticketmaster.com/discovery/v2/events.json?startDateTime=2022-12-31T08:49:00Z&endDateTime=2023-01-02T08:49:00Z&sort=date,asc&classificationName=music&city='+inputValue+'&apikey=JjogNcZMGs6cpQBpjGBuUX8hI8CkzSU9';
+
             getCurrentWeather(inputValue);
             
             function renderSportsCards(){
                 fetch(sportsEventURl).then(function (response){
                     return response.json();
                 }).then(function (response){
+                    console.log(response)
 
                     //loop to create links with images
-                
                     for (var i = 0; i < response._embedded.events.length; i++){
                         var eventDate = response._embedded.events[i].dates.start.localDate;
                         var eventName = response._embedded.events[i].name;
@@ -225,7 +251,7 @@ getLocationBtn.addEventListener('click', function(event){
                     return response.json();
                 })
                 .then(function(response){
-
+                    console.log(response)
                   //loop to create links with images
                     for (var i = 0; i < response._embedded.events.length; i++){
                         var eventDate = response._embedded.events[i].dates.start.localDate;
