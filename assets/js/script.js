@@ -178,12 +178,13 @@ getLocationBtn.addEventListener('click', function(event){
 
     console.log(dateInput)
 
-    var geoLocationUrl = 'http://ip-api.com/json/?fields=61439'
+    var geoLocationUrl = 'https://api.ipgeolocation.io/ipgeo?apiKey=e238c616bd2d42d3811c02831617815a'
     
     fetch(geoLocationUrl).then(function (response){
         return response.json();
         
     }).then(function (response){
+        console.log(response)
         console.log(response.city)
         
         //clear container before loading data
