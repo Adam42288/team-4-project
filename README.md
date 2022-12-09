@@ -18,13 +18,9 @@ All you need to use our page is a device with a browser and internet access!
 
 ## Usage
 
-Once you land on our page you can either type in your city name and select a date to find events and the weather in your area, or, simply click the "Get Location" button and enter a date to see your local weather and events. 
+Once you land on our page you can either type in your city name and select a date to find events and the weather in your area, or, simply click the "Get Location" button and enter a date to see your local weather and events. From there you will be able to click on whichever event interests you and go straight to Ticketmaster.com to purchase your tickets. Have Fun!
 
-To add a screenshot, create an `assets/images` folder in your repository and upload your screenshot to it. Then, using the relative filepath, add it to your README using the following syntax:
-
-    ```md
-    ![alt text](assets/images/screenshot.png)
-    ```
+![alt text](./assets/images/screenshot.png)
 
 ## Credits
 
