@@ -22,7 +22,6 @@ body {
    }
    
    .container {
-        position: right;
        margin: 5px;
        width: 100%;
       
@@ -57,15 +56,12 @@ body {
    .profile-background {
      background-image: url("../images/landing-page.jpg");
      display: flex;
-     height: 920px;
+     height: 1100px;
      background-position: top;
      background-size: cover;
      background-repeat: no-repeat;
-     transform: translate(-50% -50%);
-     
-   }
-   
-   
+
+   }   
    .input-box {
     display:flex;
     align-items: center;
@@ -198,114 +194,94 @@ font-weight:bold;
 
 #weatherContainer{
     position: absolute;
-    top: 100%;
-    left: 50%;
+    top: 28%;
+    left: 47%;
     margin-right: -50%;
     transform: translate(-50%, -50%);
     height: 450px;
-    width: 1400px;
-    border: 5px solid rgba(97, 95, 95, 0.829);    
-    border-radius: 10px;
+    width: 1080px;
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 
 }
 #currentWeather{
-    position: absolute;
-    top: 35%;
+  display: grid;
+  grid-template-columns: lfr lfr;
+  grid-gap: 20px;
+    position: fixed;
+    top: 100%;
     left: 50%;
-    margin-right: -50%;
+    margin-right: -60%;
     transform: translate(-50%, -50%);
-    height: 350px;
-    width: 300px;
+    height: 100px;
+    width: 100px;
 }
 
 #iconsContainer{
-    position: absolute;
-    top: 50%;
+  display: grid;
+  grid-gap: 16px;
+    position: fixed;
+    top: 58%;
     left: 50%;
     margin-right: -50%;
     transform: translate(-50%, -50%);
-    height: 400px;
-    width: 1350px;    
-    border: 5px solid rgb(31, 82, 82);    
-    border-radius: 10px;
+    height: 200px;
+    width: 1300px;    
 }
 
 .icons0{
-    display: inline-bock;
-    float: left;
-    height: 350px;
-    width: 450px;
-    margin: 20px;
+  display: grid;
+  grid-template-columns: lfr lfr;
+  grid-gap: 20px;
+    display: inline-block;
+    height: 250px;
+    width: 350px;
+    margin: 30px;
     border: 5px solid rgb(48, 47, 47);
     border-radius: 10px;
 }
 
 .icons{
-    display: inline-bock;
-    float: left;
-    height: 310px;
-    width: 215px;
-    margin: 20px;
-    border: 5px solid rgb(48, 47, 47);
-    border-radius: 10px;
+text-align: center;
+    height: 180px;
+    width: 170px;
+    padding: 3px;
+    border: 2px solid rgb(48, 47, 47);
+    background-color: #0000ff30;
 }
 
 .image{
-    height: 140px;
-    width: 100%;
+    height: 90px;
+    width: 90%;
 }
 
 .imgClass{
-    height: 140px;
-    width: 100%;
+    height: 90px;
+    width: 90%;
 }
 
 .weather{
-    margin: 5px;
-   /*  background-color: rgb(106, 215, 255); */
+    margin: 2px;
     border-radius: 5px;
     text-align: center;
     font-weight: bold;
 }
 
 .weathers {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: lfr lfr;
+  grid-gap: 20px;
 }
 
 .tempValues{
-    text-align: center;
-    display: inline-block;
-    border-radius: 5px;
-    height: 25px;
-    width: 85px;
     margin: 0;
-    margin-bottom: 5px;
-    margin-left: 5px;
 }
 
-
 .windValues{
-    text-align: center;
-    display: inline-block;
-    border-radius: 5px;
-    height: 25px;
-    width: 85px;
     margin: 0;
-    margin-bottom: 5px;
-    margin-left: 5px;
 }
 
 .humidityValues{
-    text-align: center;
-    display: inline-block;
-    border-radius: 5px;
-    height: 25px;
-    width: 85px;
     margin: 0;
-    margin-bottom: 5px;
-    margin-left: 5px;
 }
 
 
