@@ -34,8 +34,6 @@ locationInputBtn.addEventListener('click', function(event){
     event.preventDefault()
 
     headerText.textContent = "Enter A Different City"
-
-   
     
     if(firstSearch === false){
         //reloads cards with new city on new search
@@ -174,6 +172,7 @@ getLocationBtn.addEventListener('click', function(event){
     //get date input
     var dateInput = document.getElementById('date').value;
     var dateInputClean = dateInput.replace(/-/g, "")
+    
     
     console.log(dateInputClean)
 
