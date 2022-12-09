@@ -5,6 +5,7 @@ var getLocationBtn = document.getElementById('get-location')
 var getLocationEl =  document.getElementById('get-location-p')
 var headerText = document.getElementById('hero-intro2');
 var firstSearch = true;
+var hasDate = true;
 
 
 
@@ -32,8 +33,27 @@ function getDate(){
     //adds event for click
 locationInputBtn.addEventListener('click', function(event){
     event.preventDefault()
+    
+    var dateInput = document.getElementById('date').value;
+    
+    console.log(dateInput)
 
     headerText.textContent = "Enter A Different City"
+
+    if(!dateInput){
+        hasDate = false;
+    }else{
+        hasDate = true;
+    }
+    
+
+    if(hasDate === false ){
+        console.log(hasDate)
+        
+        alert("Please select a date!")
+        
+    }
+    else{
     
     if(firstSearch === false){
         //reloads cards with new city on new search
@@ -41,10 +61,12 @@ locationInputBtn.addEventListener('click', function(event){
         sportsContainer.innerHTML = ''
         //document.innerHTML = ''
         
-        var dateInput = document.getElementById('date').value;
+        
         
         var locationInput = document.getElementById('input-container');
         var inputValue = locationInput.value;
+
+        
     
         localStorage.setItem('last-search', inputValue);
 
@@ -65,7 +87,7 @@ locationInputBtn.addEventListener('click', function(event){
 
     }else{
         
-        var dateInput = document.getElementById('date').value;
+        
         
         var locationInput = document.getElementById('input-container');
         var inputValue = locationInput.value;
@@ -152,7 +174,7 @@ locationInputBtn.addEventListener('click', function(event){
 
     firstSearch = false;
     
-    
+}
     
 
 
@@ -166,11 +188,28 @@ locationInputBtn.addEventListener('click', function(event){
 getLocationBtn.addEventListener('click', function(event){
     event.preventDefault()
 
+    var dateInput = document.getElementById('date').value;
+
     headerText.textContent = "Enter A Different City"
+
+    if(!dateInput){
+        hasDate = false;
+    }else{
+        hasDate = true;
+    }
+    
+
+    if(hasDate === false ){
+        console.log(hasDate)
+        
+        alert("Please select a date!")
+        
+    }
+    else{
 
    
     //get date input
-    var dateInput = document.getElementById('date').value;
+    
     var dateInputClean = dateInput.replace(/-/g, "")
     
     
@@ -284,7 +323,7 @@ getLocationBtn.addEventListener('click', function(event){
     getLocationBtn.style.display = 'none'
    getLocationEl.innerHTML = ''
     
-
+    }
     
 
     
