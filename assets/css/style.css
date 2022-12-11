@@ -1,5 +1,5 @@
 body {
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: 'Oswald', sans-serif;
     color: rgba(173, 174, 175, 0.918);
     background-color: #333;
     max-height: fit-content;
@@ -283,17 +283,16 @@ label{
 }
 
 #iconsContainer{
-  z-index: 0; 
-  display: grid;
-  grid-gap: 16px;
+  z-index: 0;
+    display: grid;
+    grid-gap: 5px;
     position: fixed;
-    top: 58%;
+    top: 70%;
     left: 50%;
     margin-right: -50%;
     transform: translate(-50%, -50%);
     height: 500px;
-    width: 200px;  
-      
+    width: 200px;
 }
 
 .icons0{
@@ -355,4 +354,12 @@ z-index: 0;
     margin: 0;
 }
 
+@media (max-width: 740px) {
+  #weatherContainer {
+     display:none;
+  }
 
+  .icons{
+    display: none;
+  }
+}

@@ -11,7 +11,7 @@ var hasDate = true;
 function reformatPage(){
     var formEntry = document.getElementById('form-section');
     formEntry.style.flexDirection = 'row';
-    formEntry.style = "margin-top: 200px; padding: 5px;";
+    formEntry.style = "margin-top: 250px; padding: 5px;";
     document.getElementById('form-container').style.flexDirection = 'row';
     document.querySelectorAll('#form-container').style ='font-size: 15px';
     document.getElementById('submit').style.flexDirection = 'row';
