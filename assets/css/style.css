@@ -17,9 +17,10 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
+    width: 100vw;
     max-height: fit-content;
     background-position: top;
-    background-size: cover;
+    background-size: 100% auto;
     background-repeat: no-repeat;
 
   } 
@@ -290,6 +291,7 @@ label{
     top: 70%;
     left: 50%;
     margin-right: -50%;
+    margin-bottom: 20px;
     transform: translate(-50%, -50%);
     height: 500px;
     width: 200px;
@@ -361,5 +363,9 @@ z-index: 0;
 
   .icons{
     display: none;
+  }
+
+  .card{
+    width: 100%;
   }
 }
