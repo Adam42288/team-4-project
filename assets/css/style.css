@@ -1,17 +1,65 @@
 body {
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: 'Oswald', sans-serif;
     color: rgba(173, 174, 175, 0.918);
     background-color: #333;
+    max-height: fit-content;
+    
    }
    
    footer {
      text-align: center;
    }
 
+   .profile-background {
+    background-image: url("../images/landing-page.jpg");
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    max-height: fit-content;
+    background-position: top;
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+
+  } 
+  
+  .profile-background .input-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  }
+
+   .container{
+    margin: 5px;
+    width: 100%;
+    display: flex;
+    
+    text-align: center;
+    justify-content: center;
+   
+   
+  }
+
    .input-section{
     display: flex;
     flex-direction: column;
     align-items: center;
+    background: rgba(0, 0, 0, 0.75);
+    width: fit-content;
+    height: fit-content;
+    justify-content: center;
+    margin-top: 0px;
+    padding: 20px;
+    border-radius: 20px;
+   }
+
+   
+   #form-entry{
+    display: flex;
+    flex-direction: column;
    }
 
    form{
@@ -25,11 +73,7 @@ body {
     z-index: 0;
    }
    
-   .container {
-       margin: 5px;
-       width: 100%;
-      
-     }
+  
    
      .navigation {
        overflow: none;
@@ -57,15 +101,6 @@ body {
      float:right;
    }
     
-   .profile-background {
-     background-image: url("../images/landing-page.jpg");
-     display: flex;
-     height: 1100px;
-     background-position: top;
-     background-size: cover;
-     background-repeat: no-repeat;
-
-   }   
    .input-box {
     display:flex;
     align-items: center;
@@ -75,7 +110,7 @@ body {
    
    .hero-intro {
      text-align: center;
-     margin-top: 100px;
+     margin-top: 20px;
      font-size: 48px;
      color: #ddd;
    }
@@ -87,16 +122,22 @@ body {
      color: #ddd;
    }
 
+   button{
+    border-radius: 20px;
+    padding: 20px;
+    background-color:white;
+   }
+
    .card {
     display: flex;
     width: 60%;
     height: fit-content;
-    background-color: white;
+    background: rgba(237, 237, 237, 0.95);
     padding: 20px;
     box-shadow: 5px 5px 5px gray;
     border-radius: 10px;
     justify-content: center;
-    margin: auto;
+    margin: 10px;
     align-content: center;
     color: black;
   }
@@ -126,6 +167,7 @@ body {
 
   #music-events a{
   text-decoration: none;
+  color: black;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -133,11 +175,11 @@ body {
   max-height: fit-content;
   margin: 2px;
   border-left: 2px solid black;
-  
-  
-
    
-   
+  }
+  
+  #music-events a:hover{
+    color: blue;
   }
 
   #sports-event{
@@ -153,6 +195,7 @@ body {
 
   #sports-event a{
   text-decoration: none;
+  color: black;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -160,14 +203,21 @@ body {
   max-height: fit-content;
   
   border-left: 2px solid black;
-  
-   
-   
   }
+
+  #sports-event a:hover{
+    color: blue;
+  }
+
+  
 
   img{
     max-width: 200px;
    
+  }
+
+  img:hover{
+    opacity: 0.75;
   }
 
   button{
@@ -197,6 +247,16 @@ font-weight:bold;
     width: 1400px;
 }
 
+#date{
+  color: black;
+  font-size: 25px;
+}
+
+label{
+  color: #f2f2f2;
+  font-size: 20px;
+}
+
 #weatherContainer{
   z-index: 0;  
   position: absolute;
@@ -224,17 +284,17 @@ font-weight:bold;
 }
 
 #iconsContainer{
-  z-index: 0; 
-  display: grid;
-  grid-gap: 16px;
+  z-index: 0;
+    display: grid;
+    grid-gap: 5px;
     position: fixed;
-    top: 58%;
+    top: 70%;
     left: 50%;
     margin-right: -50%;
+    margin-bottom: 20px;
     transform: translate(-50%, -50%);
     height: 500px;
-    width: 200px;  
-      
+    width: 200px;
 }
 
 .icons0{
@@ -296,4 +356,16 @@ z-index: 0;
     margin: 0;
 }
 
+@media (max-width: 740px) {
+  #weatherContainer {
+     display:none;
+  }
 
+  .icons{
+    display: none;
+  }
+
+  .card{
+    width: 100%;
+  }
+}

@@ -1,14 +1,22 @@
 var eventNameContainer = document.getElementById('music-events');
-var sportsContainer = document.getElementById('sports-event')
+var sportsContainer = document.getElementById('sports-event');
 var locationInputBtn = document.getElementById('input-btn');
-var getLocationBtn = document.getElementById('get-location')
-var getLocationEl =  document.getElementById('get-location-p')
+var getLocationBtn = document.getElementById('get-location');
+var getLocationEl =  document.getElementById('get-location-p');
 var headerText = document.getElementById('hero-intro2');
 var firstSearch = true;
 var hasDate = true;
 
 
-
+function reformatPage(){
+    var formEntry = document.getElementById('form-section');
+    formEntry.style.flexDirection = 'row';
+    formEntry.style = "margin-top: 250px; padding: 5px;";
+    document.getElementById('form-container').style.flexDirection = 'row';
+    document.querySelectorAll('#form-container').style ='font-size: 15px';
+    document.getElementById('submit').style.flexDirection = 'row';
+    document.getElementById('hero-intro').textContent = '';
+};
 
 
 
@@ -25,19 +33,27 @@ window.onload = function(){
 
 }
 
-function getDate(){
-    
 
-}
 
     //adds event for click
 locationInputBtn.addEventListener('click', function(event){
     event.preventDefault()
     
+    var locationInput = document.getElementById('input-container');
+    var inputValue = locationInput.value;
     var dateInput = document.getElementById('date').value;
-    
-    console.log(dateInput)
 
+    if(!inputValue){
+        alert('Please Select a City')
+        console.log(inputValue)
+    }else{
+        console.log(inputValue)
+
+reformatPage();
+
+
+
+    console.log(dateInput)
     headerText.textContent = "Enter A Different City"
 
     if(!dateInput){
@@ -52,133 +68,185 @@ locationInputBtn.addEventListener('click', function(event){
         
         alert("Please select a date!")
         
-    }
-    else{
-    
-    if(firstSearch === false){
-        //reloads cards with new city on new search
-        eventNameContainer.innerHTML = ''
-        sportsContainer.innerHTML = ''
-        //document.innerHTML = ''
-        
-        
-        
-        var locationInput = document.getElementById('input-container');
-        var inputValue = locationInput.value;
-
-        
-    
-        localStorage.setItem('last-search', inputValue);
-
-        //displays cards once city has been entered    
-        document.getElementById('card-block').style.display= 'block';
-
-        document.getElementById('weatherContainer').style.display = 'block'
-
-        document.getElementById('weatherContainer').style.display = 'block';
-
-
-        //sets fetch urls with city chosen as a filter
-        var musicEventURl = 'https://app.ticketmaster.com/discovery/v2/events.json?startDateTime='+dateInput+':00Z&sort=date,asc&classificationName=music&city='+inputValue+'&apikey=JjogNcZMGs6cpQBpjGBuUX8hI8CkzSU9';
-        var sportsEventURl = 'https://app.ticketmaster.com/discovery/v2/events.json?startDateTime='+dateInput+':00Z&sort=date,asc&classificationName=sports&city='+inputValue+'&apikey=JjogNcZMGs6cpQBpjGBuUX8hI8CkzSU9';
-        renderSportsCards();
-        renderMusicCards();
-    
-
     }else{
         
-        
-        
-        var locationInput = document.getElementById('input-container');
-        var inputValue = locationInput.value;
     
-        localStorage.setItem('last-search', inputValue);
+        if(firstSearch === false){
+            //reloads cards with new city on new search
+            eventNameContainer.innerHTML = ''
+            sportsContainer.innerHTML = ''
+            //document.innerHTML = ''
 
-        //displays cards once city has been entered    
-        document.getElementById('card-block').style.display= 'block';
+            
 
-        document.getElementById('weatherContainer').style.display = 'block'
-
-        document.getElementById('weatherContainer').style.display = 'block';
+            var locationInput = document.getElementById('input-container');
+            var inputValue = locationInput.value;
 
 
-        //sets fetch urls with city chosen as a filter
-        var musicEventURl = 'https://app.ticketmaster.com/discovery/v2/events.json?startDateTime='+dateInput+':00Z&sort=date,asc&classificationName=music&city='+inputValue+'&apikey=JjogNcZMGs6cpQBpjGBuUX8hI8CkzSU9';
-        var sportsEventURl = 'https://app.ticketmaster.com/discovery/v2/events.json?startDateTime='+dateInput+':00Z&sort=date,asc&classificationName=sports&city='+inputValue+'&apikey=JjogNcZMGs6cpQBpjGBuUX8hI8CkzSU9';
-        }
-        getCurrentWeather(inputValue);
-        
-        function renderSportsCards(){
-        fetch(sportsEventURl).then(function (response){
-            return response.json();
-        }).then(function (response){
+
+            localStorage.setItem('last-search', inputValue);
+            var localInputValue = localStorage.getItem('last-search')
+            //displays cards once city has been entered    
             
-            //loop to create links with images
-        
-            for (var i = 0; i < response._embedded.events.length; i++){
-                var eventDate = response._embedded.events[i].dates.start.localDate;
-                var eventName = response._embedded.events[i].name;
+            //sets fetch urls with city chosen as a filter
+            var musicEventURl = 'https://app.ticketmaster.com/discovery/v2/events.json?startDateTime='+dateInput+':00Z&sort=date,asc&classificationName=music&city='+inputValue+'&apikey=JjogNcZMGs6cpQBpjGBuUX8hI8CkzSU9';
+            var sportsEventURl = 'https://app.ticketmaster.com/discovery/v2/events.json?startDateTime='+dateInput+':00Z&sort=date,asc&classificationName=sports&city='+inputValue+'&apikey=JjogNcZMGs6cpQBpjGBuUX8hI8CkzSU9';
+            var defaultUrl = 'https://app.ticketmaster.com/discovery/v2/events.json?startDateTime='+dateInput+':00Z&city='+inputValue+'&apikey=JjogNcZMGs6cpQBpjGBuUX8hI8CkzSU9';
             
-                eventLink = response._embedded.events[i].url;
-                eventImgLink = response._embedded.events[i].images[0].url;
+            fetch(defaultUrl)
+            .then(function (response){
+                return response.json();
+            }).then(function(response){
+                console.log(response)
             
-                eventPage = document.createElement('a')
-                eventImgEl = document.createElement('img')
-            
-                eventPage.title = eventName;
-                eventPage.href = eventLink;
-                eventImgEl.src = eventImgLink;
-                eventImgEl.href = eventLink;
-            
-                sportsContainer.appendChild(eventPage);
-                eventPage.textContent = eventName + ' (' + eventDate + ')';
-                eventPage.appendChild(eventImgEl)
+            if(!response._embedded){
+                alert('No events found in this city. Please enter a different city')
+                console.log(response.events)
+            }else{
+                document.getElementById('card-block').style.display= 'block'
+                document.getElementById('weatherContainer').style.display = 'block'
+                document.getElementById('weatherContainer').style.display = 'block'
+                renderSportsCards();
+                renderMusicCards();
             }
+            });
+                
+                
+                
+        }else{
+        
+        
+       
+        
+            var locationInput = document.getElementById('input-container');
+            var inputValue = locationInput.value;
             
-        
-        
-        })
-    }
-    renderSportsCards()
+            localStorage.setItem('last-search', inputValue);
+            var localInputValue = localStorage.getItem('last-search');
+            
+            localStorage.setItem('last-search', inputValue);
+               
+          
+            
+            //sets fetch urls with city chosen as a filter
+            var musicEventURl = 'https://app.ticketmaster.com/discovery/v2/events.json?startDateTime='+dateInput+':00Z&sort=date,asc&classificationName=music&city='+inputValue+'&apikey=JjogNcZMGs6cpQBpjGBuUX8hI8CkzSU9';
+            var sportsEventURl = 'https://app.ticketmaster.com/discovery/v2/events.json?startDateTime='+dateInput+':00Z&sort=date,asc&classificationName=sports&city='+inputValue+'&apikey=JjogNcZMGs6cpQBpjGBuUX8hI8CkzSU9';
+            }
+            getCurrentWeather(inputValue);
 
-        function renderMusicCards(){
-        fetch(musicEventURl).then(function (response){
-            return response.json();
-        })
-        .then(function(response){
-             
-          //loop to create links with images
-            for (var i = 0; i < response._embedded.events.length; i++){
-                var eventDate = response._embedded.events[i].dates.start.localDate;
-                var eventName = response._embedded.events[i].name;
+            var defaultUrl = 'https://app.ticketmaster.com/discovery/v2/events.json?startDateTime='+dateInput+':00Z&city='+inputValue+'&apikey=JjogNcZMGs6cpQBpjGBuUX8hI8CkzSU9';
             
-                eventLink = response._embedded.events[i].url;
-                eventImgLink = response._embedded.events[i].images[0].url;
+            fetch(defaultUrl)
+            .then(function (response){
+                return response.json();
+            }).then(function(response){
+                console.log(response)
             
+                if(!response._embedded){
+                    alert('No events found in this city. Please enter a different city')
+                    console.log(response.events)
+                }else{
+                    document.getElementById('card-block').style.display= 'block'
+                    document.getElementById('weatherContainer').style.display = 'block'
+                    document.getElementById('weatherContainer').style.display = 'block'
+                }
+            })
+            
+            function renderSportsCards(){
+            fetch(sportsEventURl).then(function (response){
+                if(!response.ok){
+                    alert("error fetching data, try again")
+                    location.reload();
+                }else{
+                return response.json();
+                }
+            }).then(function (response){
+                
+                //loop to create links with images
+            
+                for (var i = 0; i < response._embedded.events.length; i++){
+                    var eventDate = response._embedded.events[i].dates.start.localDate;
+                    var eventName = response._embedded.events[i].name;
+                
+                    eventLink = response._embedded.events[i].url;
+                    eventImgLink = response._embedded.events[i].images[0].url;
+                
+                    eventPage = document.createElement('a')
+                    eventImgEl = document.createElement('img')
+                
+                    eventPage.title = eventName;
+                    eventPage.href = eventLink;
+                    eventImgEl.src = eventImgLink;
+                    eventImgEl.href = eventLink;
+                
+                    sportsContainer.appendChild(eventPage);
+                    eventPage.textContent = eventName + ' (' + eventDate + ')';
+                    eventPage.appendChild(eventImgEl)
+                }
+                
                 eventPage = document.createElement('a')
                 eventImgEl = document.createElement('img')
+
+                eventPage.textContent = "To see more events, click here"
+                eventPage.href = "https://www.ticketmaster.com/discover/sports";
+                sportsContainer.appendChild(eventPage)
             
-                eventPage.title = eventName;
-                eventPage.href = eventLink;
-                eventImgEl.src = eventImgLink;
-                eventImgEl.href = eventLink;
-            
-                eventNameContainer.appendChild(eventPage);
-                eventPage.textContent = eventName + ' (' + eventDate + ')';
-                eventPage.appendChild(eventImgEl)        
-            };
+            })
+            }
+            renderSportsCards()
         
-        });
+            function renderMusicCards(){
+            fetch(musicEventURl).then(function (response){
+                if(!response.ok){
+                    alert("error fetching data, try again")
+                    location.reload();
+                }else{
+                return response.json();
+                }
+            })
+            .then(function(response){
+                 
+              //loop to create links with images
+                for (var i = 0; i < response._embedded.events.length; i++){
+                    var eventDate = response._embedded.events[i].dates.start.localDate;
+                    var eventName = response._embedded.events[i].name;
+                
+                    eventLink = response._embedded.events[i].url;
+                    eventImgLink = response._embedded.events[i].images[0].url;
+                
+                    eventPage = document.createElement('a')
+                    eventImgEl = document.createElement('img')
+                
+                    eventPage.title = eventName;
+                    eventPage.href = eventLink;
+                    eventImgEl.src = eventImgLink;
+                    eventImgEl.href = eventLink;
+                
+                    eventNameContainer.appendChild(eventPage);
+                    eventPage.textContent = eventName + ' (' + eventDate + ')';
+                    eventPage.appendChild(eventImgEl)        
+                };
+
+                eventPage = document.createElement('a')
+                eventImgEl = document.createElement('img')
+
+                eventPage.textContent = "To see more events, click here"
+                eventPage.href = "https://www.ticketmaster.com/discover/concerts";
+                eventNameContainer.appendChild(eventPage)
+            
+            });
     }
     renderMusicCards();
 
     firstSearch = false;
+
     
 }
+
     
 
 
-    
+}
    
     
  
@@ -191,6 +259,8 @@ getLocationBtn.addEventListener('click', function(event){
     var dateInput = document.getElementById('date').value;
 
     headerText.textContent = "Enter A Different City"
+
+    reformatPage();
 
     if(!dateInput){
         hasDate = false;
@@ -254,7 +324,12 @@ getLocationBtn.addEventListener('click', function(event){
             
             function renderSportsCards(){
                 fetch(sportsEventURl).then(function (response){
+                    if(!response.ok){
+                        alert("error fetching data, try again")
+                        location.reload();
+                    }else{
                     return response.json();
+                    }
                 }).then(function (response){
                     console.log(response)
 
@@ -279,6 +354,11 @@ getLocationBtn.addEventListener('click', function(event){
                         eventPage.appendChild(eventImgEl)
                     }
 
+                    eventPage.textContent = "To see more events, click here"
+                    eventPage.href = "https://www.ticketmaster.com/discover/sports";
+                    sportsContainer.appendChild(eventPage)
+                
+
                 
                 
                 })
@@ -287,7 +367,12 @@ getLocationBtn.addEventListener('click', function(event){
         
             function renderMusicCards(){
                 fetch(musicEventURl).then(function (response){
+                    if(!response.ok){
+                        alert("error fetching data, try again")
+                        location.reload();
+                    }else{
                     return response.json();
+                    }
                 })
                 .then(function(response){
                     console.log(response)
@@ -311,6 +396,13 @@ getLocationBtn.addEventListener('click', function(event){
                         eventPage.textContent = eventName + ' (' + eventDate +')';
                         eventPage.appendChild(eventImgEl)        
                     };
+
+                eventPage = document.createElement('a')
+                eventImgEl = document.createElement('img')
+
+                eventPage.textContent = "To see more events, click here"
+                eventPage.href = "https://www.ticketmaster.com/discover/concerts";
+                eventNameContainer.appendChild(eventPage)
                 
                 });
             }       

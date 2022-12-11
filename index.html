@@ -21,24 +21,27 @@
             </div>
             </ul>
         </nav>
-        <div class ='input-section'>
-            
-            <h2 class="hero-intro">Got the Day Off?</h2><br>
-
-            <p class ="hero-intro2" id="hero-intro2">Enter Your City Name</p>
-            <form>
-                <input type="text" id="input-container"><br>
-                <button id="input-btn">Submit</button><br>
-                <p class ="hero-intro2" id="get-location-p">Or, get current location</p>
-                <button id="get-location">Get Location</button>
+        
+        <div class ='input-section' id ="form-section">
+            <h2 class="hero-intro" id = "hero-intro">Got the Day Off?</h2>
+           
+            <div class ='form-entry' id = 'form-container'>
                 <label for="start">Select A Date:</label>
 
             <input class ="hero-intro2" type="datetime-local" id="date" name="trip-start"  value="" min="2022-12-06" max="2023-12-31">
+            <p class ="hero-intro2" id="hero-intro2">Enter Your City Name</p>
+            <form id = "submit">
+                <input type="text" id="input-container">
+                <button id="input-btn">Submit</button>
+                <p class ="hero-intro2" id="get-location-p">Or, get current location</p>
+                <button id="get-location">Get Location</button>
+                
                    
-                    
 
             </form>
         </div>
+        </div>
+    </section>
         
         <div class ="card" id = "card-block">
           
@@ -50,7 +53,7 @@
         </div>
         </div>
         
-            </section>
+       
          </header>
 
          <div id="weatherContainer">
