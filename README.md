@@ -20,6 +20,8 @@ All you need to use our page is a device with a browser and internet access!
 
 Once you land on our page you can either type in your city name and select a date to find events and the weather in your area, or, simply click the "Get Location" button and enter a date to see your local weather and events. From there you will be able to click on whichever event interests you and go straight to Ticketmaster.com to purchase your tickets. Have Fun!
 
+Link to Page: https://adam42288.github.io/team-4-project/ 
+
 ![alt text](./assets/images/screenshot.png)
 
 ## Credits
